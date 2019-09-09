@@ -1,25 +1,31 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
-
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="java.util.*, java.text.*" %>
-
-<jsp:useBean id="hello" class="com.laba1.Bean.Bean" scope="page" />
-
-<%!
-    String getFormattedDate()
-    {
-        SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy hh:mm:ss");
-        return sdf.format(new Date());
-    }
-%>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>JavaBean с JSP!</title>
+    <title>Registration</title>
 </head>
 <body>
-<h2>${hello.message}</h2>
-<i>Сегодня <%= getFormattedDate() %></i>
+<h1>Registration</h1>
+<form action="register" method="post">
+    <table cellpadding="3pt">
+        <tr>
+            <td>Username : </td>
+            <td><input type="text" name="uname" size="20"/> </td>
+        </tr>
+        <tr>
+            <td>Password : </td>
+            <td><input type="password" name="pwd" size="20"/> </td>
+        </tr>
+
+        <tr>
+            <td>Confirm Password : </td>
+            <td><input type="password" name="pwd2" size="20"/> </td>
+        </tr>
+    </table>
+    <p/>
+    <input type="submit" value="Register"/>
+</form>
 </body>
 </html>

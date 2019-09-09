@@ -1,1 +1,1 @@
-INSERT  INTO USER VALUES ( 1,'Don', '1234');
+create table U

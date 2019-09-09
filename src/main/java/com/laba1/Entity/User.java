@@ -2,6 +2,7 @@ package com.laba1.Entity;
 import lombok.*;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Data
 @NoArgsConstructor
@@ -9,17 +10,15 @@ import javax.persistence.*;
 @EqualsAndHashCode
 @Entity
 @ToString
-@Table(name = "users", schema = "public")
-public class User {
+@Table(name = "users")
+public class User  implements Serializable {
     @Id
     @GeneratedValue( strategy = GenerationType.AUTO )
-    @Basic
-    @Column(name = "id")
     private Integer id;
     @Basic
-    @Column(name ="login" ,length = 50)
+    @Column(length = 50)
     private String login;
     @Basic
-    @Column(name = "password", length = 50)
+    @Column(length = 50)
     private String password;
 }
