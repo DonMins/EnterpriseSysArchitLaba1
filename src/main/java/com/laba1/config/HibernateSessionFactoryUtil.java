@@ -1,5 +1,6 @@
 package com.laba1.config;
 
+import com.laba1.Entity.Rating;
 import com.laba1.Entity.User;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
@@ -15,6 +16,7 @@ public class HibernateSessionFactoryUtil {
             try {
                 Configuration configuration = new Configuration().configure();
                 configuration.addAnnotatedClass(User.class);
+                configuration.addAnnotatedClass(Rating.class);
                 StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties());
                 sessionFactory = configuration.buildSessionFactory(builder.build());
 

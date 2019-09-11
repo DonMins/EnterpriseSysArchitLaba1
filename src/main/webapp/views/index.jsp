@@ -5,16 +5,14 @@
 <%@ page import="java.util.*, java.text.*" %>
 <%@ page import="com.laba1.Entity.User" %>
 <%@ page import="com.laba1.service.UserService" %>
+<%@ page import="com.laba1.service.RatingService" %>
+<%@ page import="com.laba1.Entity.Rating" %>
+<%@ page import="java.sql.SQLException" %>
 
 <jsp:useBean id="hello" class="com.laba1.Bean.Bean" scope="page" />
 
 <%!
-
-    void getFormattedDate()
-    {
-        UserService userService = new UserService();
-        User user = new User("1", "2");
-        userService.saveUser(user);
+    void getFormattedDate() throws SQLException {
 
     }
 %>

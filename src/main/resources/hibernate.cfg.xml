@@ -11,8 +11,9 @@
         <property name="connection.password"></property>
         <property name="hibernate.hbm2ddl.auto">create</property>
         <!-- SQL dialect -->
-        <property name="dialect">org.hibernate.dialect.H2Dialect</property>
+<!--        <property name="dialect">org.hibernate.dialect.H2Dialect</property>-->
         <!--create the database schema on startup if required -->
 <!--        <mapping class="com.laba1.Entity.User"/>-->
+<!--        <mapping class="com.laba1.Entity.Rating"/>-->
     </session-factory>
 </hibernate-configuration>
