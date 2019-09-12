@@ -28,9 +28,9 @@
     <div class="container">
         <div class="header_inner">
             <nav class="nav">
-                <a class="nav_link" href="views/index.jsp">Правила</a>
-                <a class="nav_link" href="#">Игра</a>
-                <a class="nav_link" href="views/autorization.jsp">Авторизация</a>
+                <a class="nav_link" href="views/index.jsp"> Правила</a>
+                <a class="nav_link" href="#"> Игра</a>
+                <a class="nav_link" href="views/autorization.jsp"> Авторизация</a>
             </nav>
 
         </div>
