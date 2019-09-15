@@ -16,7 +16,6 @@ public class RatingDaoImpl implements RatingDao {
         return HibernateSessionFactoryUtil.getSessionFactory().openSession().get(Rating.class, id);
 
     }
-
     @Override
     public void save(Rating rating) {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
