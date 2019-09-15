@@ -1,8 +1,15 @@
 package com.laba1.Entity;
 
 import lombok.*;
-
 import javax.persistence.*;
+
+/**
+ * A simple JavaBean , представляющий рейтинг игр разных пользователей
+ *
+ * @author Zdornov Maxim
+ * @version 1.0
+ */
+
 
 @Table(name = "rating")
 @Data

@@ -1,13 +1,18 @@
 package com.laba1.Dao;
 
 import com.laba1.Entity.Rating;
-import com.laba1.Entity.User;
-import com.laba1.config.HibernateSessionFactoryUtil;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
 
+import java.util.List;
+/**
+ * DAO интерфейс для работы с таблицей Rating
+ * @author Maks
+ * @version 1.1
+ */
 public interface RatingDao {
     Rating findById(int id);
-    void save(Rating user);
+    void save(Rating rating);
+    void update(Rating rating);
+    void delete(Rating rating);
     Rating findByLogin(String login);
+    List<Rating> findAll();
 }

@@ -1,13 +1,16 @@
 package com.laba1.Entity;
 import com.sun.istack.internal.NotNull;
 import lombok.*;
-import org.jboss.logging.Field;
 
 import javax.persistence.*;
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+
+/**
+ * Simple JavaBean domain object that represents a User.
+ *
+ * @author  Maks
+ * @version 1.0
+ */
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

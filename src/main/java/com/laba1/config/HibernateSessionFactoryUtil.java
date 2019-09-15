@@ -6,6 +6,13 @@ import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 
+/**
+ * Конфигурация hibernate
+ *
+ * @author Zdornov Maxim
+ * @version 1.0
+ */
+
 public class HibernateSessionFactoryUtil {
     private static SessionFactory sessionFactory;
 

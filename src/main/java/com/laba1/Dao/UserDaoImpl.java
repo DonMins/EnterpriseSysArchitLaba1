@@ -1,16 +1,16 @@
 package com.laba1.Dao;
 
-import com.laba1.Entity.Rating;
 import com.laba1.Entity.User;
 import com.laba1.config.HibernateSessionFactoryUtil;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
-import org.hibernate.transform.Transformers;
-
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import java.util.List;
+
+/**
+ * Класс реализующий интерфейс для работы с таблицей Users
+ * @author Maks
+ * @version 1.1
+ */
 
 public class UserDaoImpl implements UserDao {
     @Override
@@ -37,5 +37,31 @@ public class UserDaoImpl implements UserDao {
         session.save(user);
         session.getTransaction().commit();
         session.close();
+    }
+
+    @Override
+    public void delete(User user) {
+        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        session.delete(user);
+        session.getTransaction().commit();
+        session.close();
+    }
+
+    @Override
+    public void update(User user) {
+        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        session.update(user);
+        session.getTransaction().commit();
+        session.close();
+    }
+
+    @Override
+    public List<User> findAll() {
+        List<User> userList = (List<User>) HibernateSessionFactoryUtil.getSessionFactory().openSession()
+                .createQuery("From  com.laba1.Entity.User")
+                .list();
+        return userList;
     }
 }
