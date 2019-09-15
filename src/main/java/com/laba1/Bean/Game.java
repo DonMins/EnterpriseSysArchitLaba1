@@ -33,7 +33,8 @@ public class Game {
         tempRating.setAllAttempt(tempRating.getAllAttempt() + 1);
 
         ratingDao.update(tempRating);
-        String number = genNumber();
+        UserDaoImpl userDao = new UserDaoImpl();
+        String number = userDao.findByLogin(login).getYouNumber();
 
         ArrayList<Character> numberSymbol = new ArrayList<>();
         ArrayList<Character> strSymbol = new ArrayList<>();
@@ -53,11 +54,12 @@ public class Game {
         if (bull == 4) {
             tempRating.setCountgame(tempRating.getCountgame() + 1);
             ratingDao.update(tempRating);
-            UserDaoImpl userDao = new UserDaoImpl();
             User user = userDao.findByLogin(login);
             user.setYouNumber(genNumber());
+            System.out.println(user.getYouNumber());
             userDao.update(user);
-            return stringOfYouEnteredNumber + " - " + bull + "Б" + cow + "K (число угадано) \n---------------------------\nЯ загадал еще...";
+            return stringOfYouEnteredNumber + " - " + bull + "Б" + cow + "K (число угадано) \n--" +
+                    "-------------------------\nЯ загадал еще...";
         }
         return stringOfYouEnteredNumber + " - " + bull + "Б" + cow + "K";
     }

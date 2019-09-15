@@ -1,5 +1,7 @@
 package com.laba1.Bean;
 
+import com.laba1.Dao.UserDaoImpl;
+import com.laba1.Entity.User;
 import lombok.var;
 
 import javax.servlet.ServletException;
@@ -33,11 +35,18 @@ public class GameServlet extends HttpServlet {
         String inputNumber = req.getParameter("inputNumber").trim();
         resp.setContentType("text/html; charset=UTF-8");
 
-        String login = "don"; // надо получить имя пользователя
+        String login = "test"; // надо получить имя пользователя
+        UserDaoImpl  userDao = new UserDaoImpl();
+        var game = new Game();
+        User user = userDao.findByLogin(login);
+        if(user.getYouNumber().equals("0000")){
+            user.setYouNumber(game.genNumber());
+            System.out.println("ЧИСло " + user.getYouNumber());
+            userDao.update(user);
+        }
 
         OutputStream outStream = resp.getOutputStream();
-        var game = new Game();
-        game.result(inputNumber,login);
+
         outStream.write(game.result(inputNumber,login).getBytes("UTF-8"));
         outStream.flush();
         outStream.close();

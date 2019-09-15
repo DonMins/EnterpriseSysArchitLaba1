@@ -37,11 +37,12 @@
     </tr>
     <tr>
         <th><div class="text">Поле для ввода числа:</div>
-            <input class="input" type="text" name="str" id = "inputNumber" maxlength='4' minlength="4"
-                   placeholder="Введите 4-х значное число" pattern="^[0-9]+$"  onkeyup="return proverka(this);"
-                   onchange="return proverka(this);" require value="${param.str}"/> </th>
+            <input class="input" type="text" id="inputNumber" maxlength='4' minlength='4'
+                   placeholder="Введите 4-х значное число" onkeyup="return check(this);"
+                   onchange="return check(this); " required/></th>
 
     </tr>
+    <th><span id="error"> </span></th>
     <tr>
         <th><button  class="button" type="submit"  id="toSend">Отправить</button></th>
 

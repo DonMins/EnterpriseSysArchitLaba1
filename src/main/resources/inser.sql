@@ -1,1 +1,1 @@
-insert  into users values (2,'test', '15156','0000');
+insert into RATING values ( 2,0,0,2 )
