@@ -18,6 +18,7 @@ public class UserDaoImpl implements UserDao {
         return HibernateSessionFactoryUtil.getSessionFactory().openSession().get(User.class, id);
     }
 
+
     @Override
     public User findByLogin(String login) {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
@@ -59,6 +60,14 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public List<User> findAll() {
+        List<User> userList = (List<User>) HibernateSessionFactoryUtil.getSessionFactory().openSession()
+                .createQuery("From  com.laba1.Entity.User")
+                .list();
+        return userList;
+    }
+
+    @Override
+    public List<User> findAllByID(int id) {
         List<User> userList = (List<User>) HibernateSessionFactoryUtil.getSessionFactory().openSession()
                 .createQuery("From  com.laba1.Entity.User")
                 .list();

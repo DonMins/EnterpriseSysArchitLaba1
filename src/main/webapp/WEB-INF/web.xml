@@ -9,12 +9,21 @@
         <welcome-file>game.jsp</welcome-file>
     </welcome-file-list>
     <servlet>
-        <servlet-name>Servlet</servlet-name>
-        <servlet-class>com.laba1.Bean.GameServlet</servlet-class>
-    </servlet>
+    <servlet-name>Servlet</servlet-name>
+    <servlet-class>com.laba1.Bean.GameServlet</servlet-class>
+</servlet>
     <servlet-mapping>
         <servlet-name>Servlet</servlet-name>
         <url-pattern>/Servlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>RatingServlet</servlet-name>
+        <servlet-class>com.laba1.Bean.RatingServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RatingServlet</servlet-name>
+        <url-pattern>/RatingServlet</url-pattern>
     </servlet-mapping>
 
 </web-app>

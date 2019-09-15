@@ -11,6 +11,7 @@ import java.util.List;
 
 public interface UserDao {
     User findById(int id) ;
+    List<User> findAllByID(int id);
     User findByLogin(String login);
     void save(User user);
     void delete(User user);
