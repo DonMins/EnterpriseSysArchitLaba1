@@ -9,4 +9,5 @@ import org.hibernate.Transaction;
 public interface RatingDao {
     Rating findById(int id);
     void save(Rating user);
+    Rating findByLogin(String login);
 }

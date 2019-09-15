@@ -2,10 +2,7 @@ package com.laba1.Entity;
 
 import lombok.*;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Table(name = "rating")
 @Data
@@ -16,10 +13,22 @@ import javax.persistence.Table;
 @ToString
 public class Rating {
     @Id
-
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    @Column(length = 50 )
-    private String login;
+    @Column(name = "countgame")
+    private Integer countgame;
 
+    @Column(name = "allAttempt")
+    private Integer allAttempt;
+
+    @OneToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name = "idUser")
+    private User users;
+
+    public Rating(Integer countgame, Integer allAttempt, User user) {
+        this.countgame = countgame;
+        this.allAttempt = allAttempt;
+        this.users = user;
+    }
 }

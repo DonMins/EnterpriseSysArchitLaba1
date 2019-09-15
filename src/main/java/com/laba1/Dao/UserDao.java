@@ -7,5 +7,6 @@ import org.hibernate.Transaction;
 
 public interface UserDao {
     User findById(int id) ;
+    User findByLogin(String login);
     void save(User user);
 }

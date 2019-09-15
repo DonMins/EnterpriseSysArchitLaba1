@@ -9,11 +9,6 @@
         <property name="connection.driver_class">org.h2.Driver</property>
         <property name="connection.username">sa</property>
         <property name="connection.password"></property>
-        <property name="hibernate.hbm2ddl.auto">create</property>
-        <!-- SQL dialect -->
-<!--        <property name="dialect">org.hibernate.dialect.H2Dialect</property>-->
-        <!--create the database schema on startup if required -->
-<!--        <mapping class="com.laba1.Entity.User"/>-->
-<!--        <mapping class="com.laba1.Entity.Rating"/>-->
+        <property name="hibernate.hbm2ddl.auto">update</property>
     </session-factory>
 </hibernate-configuration>
