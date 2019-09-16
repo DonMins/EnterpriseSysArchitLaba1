@@ -16,43 +16,62 @@
 
 
 
-
 <html>
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <link type= "text/css" rel="stylesheet" media="screen" href="css/main.css" />
-    <title>Title</title>
-</head>
 <body>
-<header class="header">
-    <div class="container">
-        <div class="header_inner">
-            <nav class="nav">
-                <a class="nav_link" href="views/index.jsp"> Правила</a>
-                <a class="nav_link" href="#"> Игра</a>
-                <a class="nav_link" href="views/autorization.jsp"> Авторизация</a>
-            </nav>
+<%  Object errorlogin = session.getAttribute("errorlogin"); %>
+<%  Object errorpassword = session.getAttribute("errorpassword"); %>
 
-        </div>
-    </div>
-</header>
+<%-- Вход --%>
+<div id="registration" class="registration" hidden>
+    <form action="${pageContext.request.contextPath}/userRegister" method="post">
+        <label for="login"> Login: </label>
+        <input type="text" name="login" id="login" value="${login}" required>
 
-<form method="POST" action='<%= response.encodeURL("j_security_check") %>' >
-    <table border="0" cellspacing="5">
-        <tr>
-            <th align="right">Username:</th>
-            <td align="left"><input type="text" name="j_username"></td>
-        </tr>
-        <tr>
-            <th align="right">Password:</th>
-            <td align="left"><input type="password" name="j_password"></td>
-        </tr>
-        <tr>
-            <td align="right"><input type="submit" value="Log In"></td>
-            <td align="left"><input type="reset"></td>
-        </tr>
-    </table>
-</form>
+        <%if(errorlogin!=null){%>
+        <span id="errorlogin"> Не верный лоин </span>
+        <%}%>
+        <label for="password">Password: </label>
+        <input type="text" name="password" id="password" value="${password}" required>
+        <%if(errorpassword!=null){%>
+        <span id="errorpassword"> Не верный пароль </span>
+        <%}%>
+        <label for="confirdPassword">Password: </label>
+        <input type="text" name="confirdPassword" id="confirdPassword" value="${confirdPassword}" required>
+        <%if(errorpassword!=null){%>
+        <span id="errorpassword"> Не верный пароль </span>
+        <%}%>
+
+        <input type="submit" name="signup" value="Войти">
+    </form>
+</div >
+<div class="autorization" id="autorization">
+    <form action="${pageContext.request.contextPath}/userLogin" method="post">
+        <label for="login"> Login: </label>
+        <input type="text" name="login" id="login" value="${login}" required>
+
+        <%if(errorlogin!=null){%>
+        <span id="errorlogin"> Не верный лоин </span>
+        <%}%>
+        <label for="password">Password: </label>
+        <input type="text" name="password" id="password" value="${password}" required>
+        <%if(errorpassword!=null){%>
+        <span id="errorpassword"> Не верный пароль </span>
+        <%}%>
+        <input type="submit" name="signup" value="Войти">
+    </form>
+
+    <script type="text/javascript">
+        function toggle_visibility() {
+            var e1 = document.getElementById("registration");
+            var e2 = document.getElementById("autorization");
+            e1.style.display = 'block';
+            e2.style.display = 'none';
+
+        }
+    </script>
+        <input type="submit" name="registration" id="registration_btn" value="Регистрация" onclick="toggle_visibility(); ">
+
+</div>
 
 </body>
 </html>

@@ -6,7 +6,7 @@
          version="2.5">
 
     <welcome-file-list>
-        <welcome-file>game.jsp</welcome-file>
+        <welcome-file>autorization.jsp</welcome-file>
     </welcome-file-list>
     <servlet>
     <servlet-name>Servlet</servlet-name>

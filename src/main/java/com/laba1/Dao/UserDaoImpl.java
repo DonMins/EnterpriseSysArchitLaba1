@@ -26,6 +26,9 @@ public class UserDaoImpl implements UserDao {
                 "where m.login=:login")
                 .setParameter("login" , login);
         List<User> result = query.list();
+        if (result.size()==0){
+            return null;
+        }
         session.close();
         return result.get(0);
     }

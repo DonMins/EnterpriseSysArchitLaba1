@@ -3,6 +3,7 @@ import com.sun.istack.internal.NotNull;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * Simple JavaBean domain object that represents a User.
@@ -44,4 +45,6 @@ public class User {
         this.password = password;
         this.youNumber = youNumber;
     }
+
+
 }
