@@ -11,7 +11,8 @@
     <servlet>
     <servlet-name>Servlet</servlet-name>
     <servlet-class>com.laba1.Bean.GameServlet</servlet-class>
-</servlet>
+    </servlet>
+
     <servlet-mapping>
         <servlet-name>Servlet</servlet-name>
         <url-pattern>/Servlet</url-pattern>

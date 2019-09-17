@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-@WebServlet(name = "UserServlet", urlPatterns = "/userRegister")
+@WebServlet(name = "RegisterServlet", urlPatterns = "/userRegister")
 public class RegisterServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         performTask(req, resp);
@@ -28,28 +28,21 @@ public class RegisterServlet extends HttpServlet {
 
         UserDaoImpl userDao = new UserDaoImpl();
 
-        var user= new User(req.getParameter("login"),req.getParameter("password"),"0000");
+        if(req.getParameter("newpassword").equals(req.getParameter("confirmPassword"))){
 
-        System.out.println(user.getLogin()); // вывод того что ввели
-        System.out.println(userDao.findByLogin(user.getLogin()));
+            User user = new User(req.getParameter("newLogin"),req.getParameter("newPassword"),"0000");
 
-        if (userDao.findByLogin(user.getLogin())== null){
-            session.setAttribute("errorlogin",true);
-
-            RequestDispatcher requestDispatcher = req.getRequestDispatcher("autorization.jsp");
-            requestDispatcher.forward(req, resp);
-        }else if( (userDao.findByLogin(user.getLogin()).getPassword()).equals(user.getPassword())){
-            session.setAttribute("errorpassword",false);
-            session.setAttribute("errorlogin",false);
+            userDao.save(user);
+            session.setAttribute("confirmerror",false);
             RequestDispatcher requestDispatcher = req.getRequestDispatcher("game.jsp");
             requestDispatcher.forward(req, resp);
-        } else{
-            session.setAttribute("errorpassword",true);
 
+        }else{
+            session.setAttribute("confirmPassword",true);
             RequestDispatcher requestDispatcher = req.getRequestDispatcher("autorization.jsp");
             requestDispatcher.forward(req, resp);
-        }
 
+        }
 
 
     }
