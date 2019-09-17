@@ -3,6 +3,7 @@ package com.laba1.Bean;
 import com.laba1.Dao.UserDaoImpl;
 import com.laba1.Entity.User;
 import lombok.var;
+import org.apache.commons.codec.binary.Base64;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -27,8 +28,8 @@ public class UserServlet extends HttpServlet {
         HttpSession session = req.getSession();
 
         UserDaoImpl userDao = new UserDaoImpl();
-
-        var user= new User(req.getParameter("login"),req.getParameter("password"),"0000");
+        String passwordBase64 = Base64.encodeBase64String(req.getParameter("newPassword").getBytes());
+        User user= new User(req.getParameter("login"),passwordBase64,"0000");
 
         System.out.println(user.getLogin()); // вывод того что ввели
         System.out.println(userDao.findByLogin(user.getLogin()));
@@ -38,6 +39,7 @@ public class UserServlet extends HttpServlet {
 
             RequestDispatcher requestDispatcher = req.getRequestDispatcher("autorization.jsp");
             requestDispatcher.forward(req, resp);
+
         }else if( (userDao.findByLogin(user.getLogin()).getPassword()).equals(user.getPassword())){
             session.setAttribute("errorpassword",false);
             session.setAttribute("errorlogin",false);

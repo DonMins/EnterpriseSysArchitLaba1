@@ -8,8 +8,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.util.*, java.text.*" %>
 <%@ page import="com.laba1.Entity.User" %>
-<%@ page import="com.laba1.service.UserService" %>
-<%@ page import="com.laba1.service.RatingService" %>
 <%@ page import="com.laba1.Entity.Rating" %>
 <%@ page import="java.sql.SQLException" %>
 
