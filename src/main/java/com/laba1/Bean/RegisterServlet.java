@@ -28,22 +28,19 @@ public class RegisterServlet extends HttpServlet {
 
         UserDaoImpl userDao = new UserDaoImpl();
 
-        if(req.getParameter("newpassword").equals(req.getParameter("confirmPassword"))){
+        if(req.getParameter("newPassword").equals(req.getParameter("confirmPassword"))){
 
-
-            System.out.println(req.getParameter("newlogin"));
-            System.out.println(req.getParameter("newpassword"));
-
-            User user = new User(req.getParameter("newlogin"),req.getParameter("newpassword"),"0000");
-
+            User user = new User(req.getParameter("newLogin"),req.getParameter("newPassword"),"0000");
+System.out.println(req.getParameter("newLogin"));
+System.out.println(req.getParameter("newPassword"));
             userDao.save(user);
             session.setAttribute("confirmerror",false);
             RequestDispatcher requestDispatcher = req.getRequestDispatcher("game.jsp");
             requestDispatcher.forward(req, resp);
 
         }else{
-            session.setAttribute("confirmerror",true);
-            RequestDispatcher requestDispatcher = req.getRequestDispatcher("registration.jsp");
+            session.setAttribute("confirmPassword",true);
+            RequestDispatcher requestDispatcher = req.getRequestDispatcher("autorization.jsp");
             requestDispatcher.forward(req, resp);
 
         }

@@ -21,8 +21,7 @@ import javax.servlet.http.HttpServletRequest;
 @Table(name = "users")
 public class User {
     @Id
-    @SequenceGenerator( name = "player_sequence", sequenceName = "player_id_seq", allocationSize = 1 )
-    @GeneratedValue( strategy = GenerationType.SEQUENCE, generator = "player_sequence" )
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(unique = true)
     @NotNull
     private Integer id;

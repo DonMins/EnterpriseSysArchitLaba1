@@ -8,8 +8,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.util.*, java.text.*" %>
 <%@ page import="com.laba1.Entity.User" %>
-<%@ page import="com.laba1.service.UserService" %>
-<%@ page import="com.laba1.service.RatingService" %>
 <%@ page import="com.laba1.Entity.Rating" %>
 <%@ page import="java.sql.SQLException" %>
 
@@ -20,11 +18,30 @@
 <body>
 <%  Object errorlogin = session.getAttribute("errorlogin"); %>
 <%  Object errorpassword = session.getAttribute("errorpassword"); %>
-
+<%  Object confirmpassword = session.getAttribute("confirmerror"); %>
 <%-- Вход --%>
 
 
-<div class="autorization" id="autorization">
+<div id="registration" class="registration">
+    <form action="${pageContext.request.contextPath}/userRegister" method="post">
+        <label for="newlogin"> Login: </label>
+        <input type="text" name="newLogin" id="newLogin" value="${newLogin}" required>
+
+        <label for="newpassword">Password: </label>
+        <input type="text" name="newPassword" id="newPassword" value="${newPassword}" required>
+
+        <label for="confirmPassword">Confirm password: </label>
+        <input type="text" name="confirmPassword" id="confirmPassword" value="${confirmPassword}" required>
+        <%if(confirmpassword!=null){%>
+        <span id="confirmerror"> Пароль не совпадает </span>
+        <%}%>
+
+        <input type="submit" name="newRegister" value="Регистрация">
+    </form>
+
+
+</div >
+<div class="autorization" id="autorization" hidden>
     <form action="${pageContext.request.contextPath}/userLogin" method="post">
         <label for="login"> Login: </label>
         <input type="text" name="login" id="login" value="${login}" required>
@@ -39,9 +56,17 @@
         <%}%>
         <input type="submit" name="signup" value="Войти">
     </form>
-    <form action="${pageContext.request.contextPath}/registration.jsp" method="post">
-        <input type="submit" name="registration" id="registration_btn" value="Регистрация" >
-    </form>
+
+    <script type="text/javascript">
+        function toggle_visibility() {
+            var e1 = document.getElementById("registration");
+            var e2 = document.getElementById("autorization");
+            e1.style.display = 'block';
+            e2.style.display = 'none';
+
+        }
+    </script>
+        <input type="submit" name="registration" id="registration_btn" value="Регистрация" onclick="toggle_visibility(); ">
 
 </div>
 
