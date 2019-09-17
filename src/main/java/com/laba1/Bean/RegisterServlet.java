@@ -30,7 +30,11 @@ public class RegisterServlet extends HttpServlet {
 
         if(req.getParameter("newpassword").equals(req.getParameter("confirmPassword"))){
 
-            User user = new User(req.getParameter("newLogin"),req.getParameter("newPassword"),"0000");
+
+            System.out.println(req.getParameter("newlogin"));
+            System.out.println(req.getParameter("newpassword"));
+
+            User user = new User(req.getParameter("newlogin"),req.getParameter("newpassword"),"0000");
 
             userDao.save(user);
             session.setAttribute("confirmerror",false);
@@ -38,8 +42,8 @@ public class RegisterServlet extends HttpServlet {
             requestDispatcher.forward(req, resp);
 
         }else{
-            session.setAttribute("confirmPassword",true);
-            RequestDispatcher requestDispatcher = req.getRequestDispatcher("autorization.jsp");
+            session.setAttribute("confirmerror",true);
+            RequestDispatcher requestDispatcher = req.getRequestDispatcher("registration.jsp");
             requestDispatcher.forward(req, resp);
 
         }
