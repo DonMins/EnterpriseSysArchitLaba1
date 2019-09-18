@@ -2,7 +2,6 @@ package com.laba1.Bean;
 
 import com.laba1.Dao.UserDaoImpl;
 import com.laba1.Entity.User;
-import lombok.var;
 import org.apache.commons.codec.binary.Base64;
 
 import javax.servlet.RequestDispatcher;

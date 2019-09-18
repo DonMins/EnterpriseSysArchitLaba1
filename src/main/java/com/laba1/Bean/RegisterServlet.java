@@ -1,10 +1,10 @@
 package com.laba1.Bean;
 
+import com.laba1.Dao.RatingDaoImpl;
 import com.laba1.Dao.UserDaoImpl;
+import com.laba1.Entity.Rating;
 import com.laba1.Entity.User;
-import lombok.var;
 import org.apache.commons.codec.binary.Base64;
-import org.apache.commons.codec.digest.DigestUtils;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -29,17 +29,18 @@ public class RegisterServlet extends HttpServlet {
         HttpSession session = req.getSession();
 
         UserDaoImpl userDao = new UserDaoImpl();
+        RatingDaoImpl ratingDao = new RatingDaoImpl();
 
         if(req.getParameter("newPassword").equals(req.getParameter("confirmPassword"))){
             String passwordBase64 = Base64.encodeBase64String(req.getParameter("newPassword").getBytes());
             System.out.println(passwordBase64);
 
             User user = new User(req.getParameter("newLogin"),passwordBase64,"0000");
-
-            System.out.println(user.getLogin());
-            System.out.println(user.getPassword());
+            Rating rating = new Rating(0,0,user);
 
             userDao.save(user);
+            ratingDao.save(rating);
+
             session.setAttribute("confirmerror",false);
             RequestDispatcher requestDispatcher = req.getRequestDispatcher("game.jsp");
             requestDispatcher.forward(req, resp);

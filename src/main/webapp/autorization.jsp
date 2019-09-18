@@ -33,7 +33,6 @@
     </form>
 
 
-
     <% }else{ %>
 
     <form action="${pageContext.request.contextPath}/userLogin" method="post">
@@ -41,7 +40,7 @@
         <input type="text" name="login" id="login" value="${login}" required>
 
         <%if(errorlogin!=null){%>
-        <span id="errorlogin"> Не верный лоин </span>
+        <span id="errorlogin"> Не верный логин </span>
         <%}%>
         <label for="password">Password: </label>
         <input type="text" name="password" id="password" value="${password}" required>

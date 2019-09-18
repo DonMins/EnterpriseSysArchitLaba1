@@ -28,6 +28,11 @@
 </head>
 <body>
 <li class="rating"><a href="rating.jsp">Рейтинг игроков</a></li>
+
+<form action="${pageContext.request.contextPath}/logout" method="post">
+      <input type="submit" name="signup" value="Выход">
+</form>
+
 <h1> Игра быки и коровы </h1>
 <h2> Я загадал число, попробуй угадать его... </h2>
 

@@ -1,15 +1,8 @@
 package com.laba1.Bean;
 
 import com.laba1.Dao.RatingDaoImpl;
-import com.laba1.Dao.UserDaoImpl;
 import com.laba1.Entity.Rating;
-import com.laba1.Entity.User;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
@@ -20,19 +13,8 @@ import java.util.TreeMap;
  *
  * @author Maks
  */
-public class RatingServlet  extends HttpServlet  {
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        performTask(req, resp);
-    }
 
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        performTask(req, resp);
-    }
-
-    protected void performTask(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setAttribute("map", rating());
-        req.getRequestDispatcher("rating.jsp").forward(req, resp);
-    }
+public class RatingServlet  {
 
     public Map<Double, String> rating() {
         RatingDaoImpl ratingDao = new RatingDaoImpl();

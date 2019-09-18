@@ -3,7 +3,6 @@ import com.sun.istack.internal.NotNull;
 import lombok.*;
 
 import javax.persistence.*;
-import javax.servlet.http.HttpServletRequest;
 
 /**
  * Simple JavaBean domain object that represents a User.
@@ -21,7 +20,7 @@ import javax.servlet.http.HttpServletRequest;
 @Table(name = "users")
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(unique = true)
     @NotNull
     private Integer id;
