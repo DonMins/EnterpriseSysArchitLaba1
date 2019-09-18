@@ -15,33 +15,27 @@
 
 
 <html>
+<head>
+    <link rel="stylesheet" href="css/main.css" type="text/css">
+</head>
 <body>
 <%  Object errorlogin = session.getAttribute("errorlogin"); %>
 <%  Object errorpassword = session.getAttribute("errorpassword"); %>
-<%  Object confirmpassword = session.getAttribute("confirmerror"); %>
+<%  Object userIn = session.getAttribute("userIn"); %>
+<%  Object userLogin= session.getAttribute("userLogin"); %>
 <%-- Вход --%>
 
-
-<div id="registration" class="registration">
-    <form action="${pageContext.request.contextPath}/userRegister" method="post">
-        <label for="newlogin"> Login: </label>
-        <input type="text" name="newLogin" id="newLogin" value="${newLogin}" required>
-
-        <label for="newpassword">Password: </label>
-        <input type="text" name="newPassword" id="newPassword" value="${newPassword}" required>
-
-        <label for="confirmPassword">Confirm password: </label>
-        <input type="text" name="confirmPassword" id="confirmPassword" value="${confirmPassword}" required>
-        <%if(confirmpassword!=null){%>
-        <span id="confirmerror"> Пароль не совпадает </span>
-        <%}%>
-
-        <input type="submit" name="newRegister" value="Регистрация">
+<div class="autorization" id="autorization">
+    <%if(userIn !=null){%>
+    <form action="${pageContext.request.contextPath}/game.jsp" method="post">
+        ${userLogin}| <a href="">Выйти</a>
+        <input type="submit" name="game_ btn" value="Играть">
     </form>
 
 
-</div >
-<div class="autorization" id="autorization" hidden>
+
+    <% }else{ %>
+
     <form action="${pageContext.request.contextPath}/userLogin" method="post">
         <label for="login"> Login: </label>
         <input type="text" name="login" id="login" value="${login}" required>
@@ -57,18 +51,27 @@
         <input type="submit" name="signup" value="Войти">
     </form>
 
-    <script type="text/javascript">
-        function toggle_visibility() {
-            var e1 = document.getElementById("registration");
-            var e2 = document.getElementById("autorization");
-            e1.style.display = 'block';
-            e2.style.display = 'none';
-
-        }
-    </script>
-        <input type="submit" name="registration" id="registration_btn" value="Регистрация" onclick="toggle_visibility(); ">
+    <form class="register" action="${pageContext.request.contextPath}/registration.jsp" method="post">
+        <input type="submit" name="registration" id="registration_btn" value="Регистрация">
+    </form>
+    <%}%>
 
 </div>
+<hr class="line">
+<div class = "rules">
+    <h2 class="heading">Правила</h2>
+    <p>Компьютер загадывает 4-х значное число.
+        Цифры загаданного числа не повторяются.
+        Задача пользователя угадать загаданное число.
+        У пользователя неограниченное число попыток.
+        В каждую попытку пользователь дает компьютеру свой вариант числа.
+        Компьютер сообщает сколько цифр точно угадано (бык) и сколько цифр угадано без учета позиции (корова).
+        По ответу компьютера пользователь должен за несколько ходов угадать число.
+        Пример: 7328 -- загаданное число 0819 -- 0Б1К 4073 -- 0Б2К 5820 -- 0Б1К 3429 -- 1Б1К 5960 -- 0Б0К 7238 -- 2Б2К 7328 -- 4Б0К (число угадано)
+    </p>
+</div>
+
+
 
 
 </body>

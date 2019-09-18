@@ -23,11 +23,11 @@
 
 <div id="registration" class="registration">
     <form action="${pageContext.request.contextPath}/userRegister" method="post">
-        <label for="newlogin"> Login: </label>
-        <input type="text" name="newlogin" id="newlogin" value="${newLogin}" required>
+        <label for="newLogin"> Login: </label>
+        <input type="text" name="newLogin" id="newLogin" value="${newLogin}" required>
 
-        <label for="newpassword">Password: </label>
-        <input type="text" name="newpassword" id="newpassword" value="${newPassword}" required>
+        <label for="newPassword">Password: </label>
+        <input type="text" name="newPassword" id="newPassword" value="${newPassword}" required>
 
         <label for="confirmPassword">Confirm password: </label>
         <input type="text" name="confirmPassword" id="confirmPassword" value="${confirmPassword}" required>

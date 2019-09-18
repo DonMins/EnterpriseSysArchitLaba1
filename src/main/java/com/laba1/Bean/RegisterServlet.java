@@ -35,6 +35,10 @@ public class RegisterServlet extends HttpServlet {
             System.out.println(passwordBase64);
 
             User user = new User(req.getParameter("newLogin"),passwordBase64,"0000");
+
+            System.out.println(user.getLogin());
+            System.out.println(user.getPassword());
+
             userDao.save(user);
             session.setAttribute("confirmerror",false);
             RequestDispatcher requestDispatcher = req.getRequestDispatcher("game.jsp");

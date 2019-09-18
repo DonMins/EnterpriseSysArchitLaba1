@@ -28,26 +28,28 @@ public class UserServlet extends HttpServlet {
         HttpSession session = req.getSession();
 
         UserDaoImpl userDao = new UserDaoImpl();
-        String passwordBase64 = Base64.encodeBase64String(req.getParameter("newPassword").getBytes());
+        String passwordBase64 = Base64.encodeBase64String(req.getParameter("password").getBytes());
         User user= new User(req.getParameter("login"),passwordBase64,"0000");
 
         System.out.println(user.getLogin()); // вывод того что ввели
-        System.out.println(userDao.findByLogin(user.getLogin()));
 
         if (userDao.findByLogin(user.getLogin())== null){
             session.setAttribute("errorlogin",true);
+            session.setAttribute("userIn",null);
 
             RequestDispatcher requestDispatcher = req.getRequestDispatcher("autorization.jsp");
             requestDispatcher.forward(req, resp);
 
         }else if( (userDao.findByLogin(user.getLogin()).getPassword()).equals(user.getPassword())){
-            session.setAttribute("errorpassword",false);
-            session.setAttribute("errorlogin",false);
-            RequestDispatcher requestDispatcher = req.getRequestDispatcher("game.jsp");
+            session.setAttribute("errorpassword",null);
+            session.setAttribute("errorlogin",null);
+            session.setAttribute("userIn",true);
+            session.setAttribute("userLogin",user.getLogin());
+            RequestDispatcher requestDispatcher = req.getRequestDispatcher("autorization.jsp");
             requestDispatcher.forward(req, resp);
         } else{
             session.setAttribute("errorpassword",true);
-
+            session.setAttribute("userIn",null);
             RequestDispatcher requestDispatcher = req.getRequestDispatcher("autorization.jsp");
             requestDispatcher.forward(req, resp);
         }
