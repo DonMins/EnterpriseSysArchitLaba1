@@ -17,12 +17,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <html>
+<%if (session.getAttribute("userLogin")!= null){%>
 <head>
     <link rel="stylesheet" href="css/font.css" type="text/css">
     <title> Игра быки и коровы </title>
 
-    <script src="http://code.jquery.com/jquery-2.2.4.js"
-            type="text/javascript"></script>
+    <script src="http://code.jquery.com/jquery-2.2.4.js" type="text/javascript"></script>
     <script src="js/app.js" type="text/javascript"></script>
 
 </head>
@@ -58,4 +58,5 @@
 </table>
 
 </body>
+<% }%>
 </html>
