@@ -30,26 +30,35 @@ public class RegisterServlet extends HttpServlet {
 
         UserDaoImpl userDao = new UserDaoImpl();
         RatingDaoImpl ratingDao = new RatingDaoImpl();
-
-        if(req.getParameter("newPassword").equals(req.getParameter("confirmPassword"))){
-            String passwordBase64 = Base64.encodeBase64String(req.getParameter("newPassword").getBytes());
-            System.out.println(passwordBase64);
-
-            User user = new User(req.getParameter("newLogin"),passwordBase64,"0000");
-            Rating rating = new Rating(0,0,user);
-
-            userDao.save(user);
-            ratingDao.save(rating);
-
-            session.setAttribute("confirmerror",false);
-            RequestDispatcher requestDispatcher = req.getRequestDispatcher("game.jsp");
+        if (userDao.findByLogin(req.getParameter("newLogin"))!= null) {
+            session.setAttribute("exist",true);
+            session.setAttribute("confirmerror",null);
+            RequestDispatcher requestDispatcher = req.getRequestDispatcher("registration.jsp");
             requestDispatcher.forward(req, resp);
 
-        }else{
-            session.setAttribute("confirmPassword",true);
-            RequestDispatcher requestDispatcher = req.getRequestDispatcher("autorization.jsp");
-            requestDispatcher.forward(req, resp);
+        } else{
+            if(req.getParameter("newPassword").equals(req.getParameter("confirmPassword"))){
+                String passwordBase64 = Base64.encodeBase64String(req.getParameter("newPassword").getBytes());
+                System.out.println(passwordBase64);
+                session.setAttribute("exist",null);
 
+                User user = new User(req.getParameter("newLogin"),passwordBase64,"0000");
+                Rating rating = new Rating(0,0,user);
+
+                userDao.save(user);
+                ratingDao.save(rating);
+
+                session.setAttribute("confirmerror",null);
+                RequestDispatcher requestDispatcher = req.getRequestDispatcher("autorization.jsp");
+                requestDispatcher.forward(req, resp);
+
+            }else{
+                session.setAttribute("confirmerror",true);
+                session.setAttribute("exist",null);
+                RequestDispatcher requestDispatcher = req.getRequestDispatcher("registration.jsp");
+                requestDispatcher.forward(req, resp);
+
+            }
         }
 
 

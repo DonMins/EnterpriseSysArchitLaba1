@@ -1,22 +1,74 @@
-body{
-    align: center;
-    font-size: 15px;
-    color:black;
+
+.upper{
+    display:flex;
+    width: 100%;
 }
 .autorization{
-    display:flex;
+    float:left;
+    width: 300px;
 }
+.image{
+    float:right;
+    padding-left: 500px;
+}
+
+
 .register{
     padding-left: 10px;
 }
-.line{
-    background-color: crimson;
-   color: crimson;
-    size: 3px
-}
+
 .heading{
     text-transform:uppercase;
 }
 .rules{
+    display:block;
+    /*padding-top: 30px;*/
     text-align: center;
 }
+
+span.errortext {
+    color: red;
+    font-size: 15px;
+}
+hr.line{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 0;
+    border-top: 1px solid #e80a0a;
+}
+input.btn.btn-success.pull-right.game  {
+    width: 300px;
+    height: 100px;
+    margin-top: 50px;
+    margin-right:-200px;
+    border-radius: 20px;
+}
+.registration{
+    display:block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    width: 300px;
+}
+.img_reg{
+
+    margin-left: 400px;
+
+}
+.inGame{
+    font-size: 20px;
+    display:flex;
+    width: 400px;
+    margin-top: 100px;
+    margin-left: 100px;
+
+
+}
+.btn_left{
+    float:left;
+}
+.btn_right{
+    float:right;
+}
+
+

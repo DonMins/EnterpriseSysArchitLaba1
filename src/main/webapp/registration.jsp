@@ -15,31 +15,70 @@
 
 
 <html>
+<head>
+    <script src="js/app.js" type="text/javascript"></script>
+    <script src="http://code.jquery.com/jquery-2.2.4.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/main.css" type="text/css">
+</head>
 <body>
 
 <%  Object confirmpassword = session.getAttribute("confirmerror"); %>
+<% Object errorNewlogin = session.getAttribute("exist");%>
 <%-- Вход --%>
 
 
 <div id="registration" class="registration">
+    <h2 class="heading">Регистрация</h2>
+    <hr class="line">
     <form action="${pageContext.request.contextPath}/userRegister" method="post">
-        <label for="newLogin"> Login: </label>
-        <input type="text" name="newLogin" id="newLogin" value="${newLogin}" required>
 
-        <label for="newPassword">Password: </label>
-        <input type="text" name="newPassword" id="newPassword" value="${newPassword}" required>
+        <div class="form-group">
+            <label for="newLogin"> Логин: </label>
+            <div class="input-group">
+                <input class="form-control" type="text" name="newLogin" id="newLogin" value="${newLogin}" required
+                   placeholder="Введите логин">
+            </div>
+        </div>
 
-        <label for="confirmPassword">Confirm password: </label>
-        <input type="text" name="confirmPassword" id="confirmPassword" value="${confirmPassword}" required>
-        <%if(confirmpassword!=null){%>
-        <span id="confirmerror"> Пароль не совпадает </span>
+        <%if (errorNewlogin != null) {%>
+        <span class="errortext"> Такой логин уже существует </span>
         <%}%>
+        <div class="form-group">
+            <label for="newPassword">Пароль: </label>
+            <div class="input-group">
+                <input class="form-control" type="password" name="newPassword" id="newPassword" value="${newPassword}" required
+                       placeholder="Введите пароль">
+            </div>
+        </div>
 
-        <input type="submit" name="newRegister" value="Регистрация">
+        <div class="form-group">
+            <label for="confirmPassword">Повторите пароль: </label>
+            <div class="input-group">
+                <input class="form-control" type="password" name="confirmPassword" id="confirmPassword" value="${confirmPassword}" required
+                       placeholder="Введите пароль снова">
+            </div>
+        </div>
+
+        <%if(confirmpassword!=null){%>
+        <span  class="errortext"> Пароль не совпадает </span>
+        <%}%>
+        <div class="form-group">
+            <div class="input-group">
+                <input type="submit" name="newRegister" value="Регистрация" class="btn btn-success pull-right">
+            </div>
+        </div>
+
     </form>
 
-
 </div >
+<img src="images/logo.png" class="img_reg">
 
 
 </body>

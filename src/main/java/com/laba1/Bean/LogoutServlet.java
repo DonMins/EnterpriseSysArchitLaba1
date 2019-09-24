@@ -22,7 +22,8 @@ public class LogoutServlet extends HttpServlet {
     protected void performTask(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
         session.removeAttribute("userLogin");
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher("index.jsp");
+        session.setAttribute("userIn",null);
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("autorization.jsp");
         requestDispatcher.forward(req, resp);
     }
 }
