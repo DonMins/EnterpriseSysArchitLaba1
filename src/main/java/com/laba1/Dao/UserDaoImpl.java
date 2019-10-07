@@ -1,79 +1,65 @@
 package com.laba1.Dao;
 
 import com.laba1.Entity.User;
-import com.laba1.config.HibernateSessionFactoryUtil;
-import org.hibernate.Session;
-import org.hibernate.query.Query;
+
+import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.Persistence;
 import java.util.List;
 
-/**
- * Класс реализующий интерфейс для работы с таблицей Users
- * @author Maks
- * @version 1.1
- */
 
+@Stateless(name = "UserDaoImpl")
 public class UserDaoImpl implements UserDao {
-    @Override
-    public User findById(int id) {
-        return HibernateSessionFactoryUtil.getSessionFactory().openSession().get(User.class, id);
-    }
 
+
+    private EntityManager em = Persistence.createEntityManagerFactory("hibernate.ejb.entitymanager_factory_name").createEntityManager();
+
+    public User findById(int id) {
+        return em.find(User.class, id);
+    }
 
     @Override
     public User findByLogin(String login) {
-        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-        Query<User>query = session.createQuery("select m from com.laba1.Entity.User m " +
-                "where m.login=:login")
-                .setParameter("login" , login);
-        List<User> result = query.list();
-        if (result.size()==0){
+      List<User> user = em.createQuery("select a from User a where a.login =:login")
+                         .setParameter("login",login)
+                         .getResultList();
+        if (user.size()==0){
             return null;
         }
-        session.close();
-        return result.get(0);
+
+        return user.get(0);
+
     }
 
 
-    @Override
     public void save(User user) {
-        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-        session.beginTransaction();
-        session.save(user);
-        session.getTransaction().commit();
-        session.close();
+        em.getTransaction().begin();
+        em.persist(user);
+        em.flush();
+        em.getTransaction().commit();
     }
 
-    @Override
+
     public void delete(User user) {
-        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-        session.beginTransaction();
-        session.delete(user);
-        session.getTransaction().commit();
-        session.close();
+        em.getTransaction().begin();
+        em.remove(user);
+        em.flush();
+        em.getTransaction().commit();
+
     }
 
-    @Override
+
     public void update(User user) {
-        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-        session.beginTransaction();
-        session.update(user);
-        session.getTransaction().commit();
-        session.close();
+        em.getTransaction().begin();
+        em.merge(user);
+        em.flush();
+        em.getTransaction().commit();
+
     }
 
-    @Override
+
     public List<User> findAll() {
-        List<User> userList = (List<User>) HibernateSessionFactoryUtil.getSessionFactory().openSession()
-                .createQuery("From  com.laba1.Entity.User")
-                .list();
-        return userList;
-    }
 
-    @Override
-    public List<User> findAllByID(int id) {
-        List<User> userList = (List<User>) HibernateSessionFactoryUtil.getSessionFactory().openSession()
-                .createQuery("From  com.laba1.Entity.User")
-                .list();
-        return userList;
+        return em.createQuery("select a from User a",User.class).getResultList();
     }
 }

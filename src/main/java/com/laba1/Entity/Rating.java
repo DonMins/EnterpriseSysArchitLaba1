@@ -30,7 +30,7 @@ public class Rating {
     private Integer allAttempt;
 
     @OneToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name = "idUser")
+    @JoinColumn(name = "idUser", unique = true)
     private User users;
 
     public Rating(Integer countgame, Integer allAttempt, User user) {

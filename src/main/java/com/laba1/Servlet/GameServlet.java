@@ -1,9 +1,9 @@
-package com.laba1.Bean;
+package com.laba1.Servlet;
 
-import com.laba1.Dao.UserDaoImpl;
 import com.laba1.Entity.User;
-import lombok.var;
+import com.laba1.Service.UserService;
 
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -23,6 +23,13 @@ import java.io.OutputStream;
 @WebServlet()
 public class GameServlet extends HttpServlet {
 
+    @EJB(beanName="UserServiceImpl")
+    UserService userService;
+
+    @EJB(name = "game")
+    Game game;
+
+
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         performTask(req, resp);
     }
@@ -37,14 +44,13 @@ public class GameServlet extends HttpServlet {
         resp.setContentType("text/html; charset=UTF-8");
 
         String login = (String) session.getAttribute("userLogin"); // надо получить имя пользователя
-        System.out.println("ЮЗЕР " + login);
-        UserDaoImpl  userDao = new UserDaoImpl();
-        var game = new Game();
-        User user = userDao.findByLogin(login);
+
+
+        User user = userService.findByLogin(login);
         if(user.getYouNumber().equals("0000")){
             user.setYouNumber(game.genNumber());
             System.out.println("ЧИСло " + user.getYouNumber());
-            userDao.update(user);
+            userService.update(user);
         }
 
         OutputStream outStream = resp.getOutputStream();

@@ -1,16 +1,10 @@
-package com.laba1.Dao;
-
+package com.laba1.Service;
 
 import com.laba1.Entity.Rating;
 
 import java.util.List;
 
-/**
- * DAO интерфейс для работы с таблицей Rating
- * @author Maks
- * @version 1.1
- */
-public interface RatingDao {
+public interface RatingService {
     Rating findById(int id);
     void save(Rating rating);
     void update(Rating rating);

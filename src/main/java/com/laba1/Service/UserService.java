@@ -1,17 +1,11 @@
-package com.laba1.Dao;
+package com.laba1.Service;
 
 
 import com.laba1.Entity.User;
 
 import java.util.List;
 
-/**
- * DAO интерфейс для работы с таблицей Users
- * @author Maks
- * @version 1.1
- */
-
-public interface UserDao {
+public interface UserService {
     User findById(int id) ;
     User findByLogin(String login) ;
     void save(User user);

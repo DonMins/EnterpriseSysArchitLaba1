@@ -1,19 +1,7 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: DonMin
-  Date: 15.09.2019
-  Time: 12:33
-  To change this template use File | Settings | File Templates.
---%>
+
 <%@ page import="com.laba1.Task.Task" %>
-<%@ page import="java.util.ArrayList" %><%--
-<%--
-  Created by IntelliJ IDEA.
-  User: DonMin
-  Date: 30.07.2019
-  Time: 21:45
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="java.util.ArrayList" %>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <html>
@@ -27,7 +15,10 @@
 
 </head>
 <body>
-<li class="rating"><a href="rating.jsp">Рейтинг игроков</a></li>
+
+<form action="${pageContext.request.contextPath}/rating" method="post">
+    <input type="submit" name="signup" value="Рейтинг игроков" class="btn btn-success pull-right">
+</form>
 
 <form action="${pageContext.request.contextPath}/logout" method="post">
       <input type="submit" name="signup" value="Выход">
@@ -43,9 +34,11 @@
     </tr>
     <tr>
         <th><div class="text">Поле для ввода числа:</div>
+            <form>
             <input class="input" type="text" id="inputNumber" maxlength='4' minlength='4'
                    placeholder="Введите 4-х значное число" onkeyup="return check(this);"
-                   onchange="return check(this); " required/></th>
+                   onchange="return check(this); " required/></form></th>
+
 
     </tr>
     <th><span id="error"> </span></th>
@@ -58,5 +51,8 @@
 </table>
 
 </body>
-<% }%>
+<% } else {
+    String redirectURL = "autorization.jsp";
+    response.sendRedirect(redirectURL);
+}%>
 </html>

@@ -1,4 +1,4 @@
-package com.laba1.Bean;
+package com.laba1.Servlet;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;

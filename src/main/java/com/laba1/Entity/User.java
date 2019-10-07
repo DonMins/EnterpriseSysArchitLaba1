@@ -34,7 +34,7 @@ public class User {
     @Column(name = "youNumber")
     private String youNumber;
 
-    @Transient
+
     @OneToOne(mappedBy = "users", fetch=FetchType.LAZY)
     private Rating rating;
 

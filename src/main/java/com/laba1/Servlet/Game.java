@@ -1,9 +1,12 @@
-package com.laba1.Bean;
-import com.laba1.Dao.RatingDaoImpl;
-import com.laba1.Dao.UserDaoImpl;
+package com.laba1.Servlet;
+
 import com.laba1.Entity.Rating;
 import com.laba1.Entity.User;
+import com.laba1.Service.RatingService;
+import com.laba1.Service.UserService;
 
+import javax.ejb.EJB;
+import javax.ejb.Stateless;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -14,10 +17,16 @@ import java.util.Collections;
  * @author  Maks
  * @version 1.0
  */
-
+@Stateless(name = "game")
 public class Game {
 
-     public String genNumber() {
+    @EJB(beanName="UserServiceImpl")
+    UserService userService;
+
+    @EJB(beanName="RatingServiceImpl")
+    RatingService ratingService;
+
+   public String genNumber() {
         final int MAX_NUMBER = 10;
         Integer[] randomNumbers = new Integer[MAX_NUMBER];
         for (int i = 0; i < randomNumbers.length; i++) {
@@ -28,13 +37,10 @@ public class Game {
     }
 
     public String result(String stringOfYouEnteredNumber, String login) {
-        RatingDaoImpl ratingDao = new RatingDaoImpl();
-        Rating tempRating = ratingDao.findByLogin(login);
+        Rating tempRating = ratingService.findByLogin(login);
         tempRating.setAllAttempt(tempRating.getAllAttempt() + 1);
-
-        ratingDao.update(tempRating);
-        UserDaoImpl userDao = new UserDaoImpl();
-        String number = userDao.findByLogin(login).getYouNumber();
+        ratingService.update(tempRating);
+        String number = userService.findByLogin(login).getYouNumber();
 
         ArrayList<Character> numberSymbol = new ArrayList<>();
         ArrayList<Character> strSymbol = new ArrayList<>();
@@ -53,11 +59,10 @@ public class Game {
         cow = l3.size() - bull;
         if (bull == 4) {
             tempRating.setCountgame(tempRating.getCountgame() + 1);
-            ratingDao.update(tempRating);
-            User user = userDao.findByLogin(login);
+            ratingService.update(tempRating);
+            User user = userService.findByLogin(login);
             user.setYouNumber(genNumber());
-            System.out.println(user.getYouNumber());
-            userDao.update(user);
+            userService.update(user);
             return stringOfYouEnteredNumber + " - " + bull + "Б" + cow + "K (число угадано) \n--" +
                     "-------------------------\nЯ загадал еще...";
         }

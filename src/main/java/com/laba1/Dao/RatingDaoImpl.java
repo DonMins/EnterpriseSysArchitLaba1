@@ -1,9 +1,11 @@
 package com.laba1.Dao;
 
+
 import com.laba1.Entity.Rating;
-import com.laba1.config.HibernateSessionFactoryUtil;
-import org.hibernate.Session;
-import org.hibernate.query.Query;
+
+import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.Persistence;
 import java.util.List;
 
 /**
@@ -12,57 +14,51 @@ import java.util.List;
  * @version 1.1
  */
 
-
+@Stateless(name = "RatingDaoImpl")
 public class RatingDaoImpl implements RatingDao {
+
+    private EntityManager em = Persistence.createEntityManagerFactory("hibernate.ejb.entitymanager_factory_name").createEntityManager();
+
     @Override
     public Rating findById(int id) {
-        return HibernateSessionFactoryUtil.getSessionFactory().openSession().get(Rating.class, id);
+            return em.find(Rating.class, id);
+        }
 
-    }
     @Override
     public void save(Rating rating) {
-        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-        session.beginTransaction();
-        session.save(rating);
-        session.getTransaction().commit();
-        session.close();
+        em.getTransaction().begin();
+        em.persist(rating);
+        em.flush();
+        em.getTransaction().commit();
     }
 
     @Override
-    public void update(Rating rating) {
-        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-        session.beginTransaction();
-        session.update(rating);
-        session.getTransaction().commit();
-        session.close();
+    public void update(Rating rating){
+        em.getTransaction().begin();
+        em.merge(rating);
+        em.flush();
+        em.getTransaction().commit();
     }
 
     @Override
     public void delete(Rating rating) {
-        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-        session.beginTransaction();
-        session.delete(rating);
-        session.getTransaction().commit();
-        session.close();
+        em.getTransaction().begin();
+        em.remove(rating);
+        em.flush();
+        em.getTransaction().commit();
     }
 
     @Override
     public Rating findByLogin(String login) {
-        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-        Query<Rating> query = session.createQuery("select m from com.laba1.Entity.Rating m " +
-                "where m.users.id =(select t.id from com.laba1.Entity.User t where t.login=:login)")
-                .setParameter("login", login);
-        List<Rating> results = query.list();
-        session.close();
-        return results.get(0);
+       List<Rating> query =  em.createQuery("select m from Rating m " +
+                "where m.users.id =(select t.id from User t where t.login=:login)")
+                .setParameter("login", login).getResultList();
+        return query.get(0);
     }
 
     @Override
     public List<Rating> findAll() {
-        List<Rating> ratingList = (List<Rating>) HibernateSessionFactoryUtil.getSessionFactory().openSession()
-                .createQuery("From  com.laba1.Entity.Rating")
-                .list();
-        return ratingList;
+        return (List<Rating>) em.createQuery("select m from Rating m").getResultList();
     }
 
 }
