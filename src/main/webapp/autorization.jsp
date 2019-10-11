@@ -23,7 +23,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
             integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
             crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="css/main.css" type="text/css">
+    <link rel="stylesheet" href="css/main4.css" type="text/css">
 
     <script>
         $(document).ready(function () {
@@ -68,44 +68,49 @@
 
 
         <% } else { %>
-        <form action="${pageContext.request.contextPath}/userLogin" method="post">
+        <div class="autori">
 
-            <div class="form-group">
-                <label for="login"> Логин: </label>
-                <input class="form-control" type="text" name="login" id="login" value="${login}" required
-                       placeholder="Введите логин">
-            </div>
+            <form class="leftR" action="${pageContext.request.contextPath}/userLogin" method="post">
 
-            <%if (errorlogin != null) {%>
-            <span class="errortext"> Не верный логин </span>
-            <%}%>
-            <div class="form-group">
-                <label for="password">Пароль: </label>
-                <div class="input-group">
-                    <input class="form-control" type="password" name="password" id="password" value="${password}" required
-                           placeholder="Введите пароль">
-                    <div class="input-group-addon" id="s-h-pass"><span class="glyphicon glyphicon-eye-open"
-                                                                       title="Показать пароль"></span></div>
+                <div class="form-group">
+                    <label for="login"> Логин: </label>
+
+                        <input class="form-control" type="text" name="login" id="login" value="${login}" required
+                               placeholder="Введите логин">
+                    </div>
+
+
+
+                <%if (errorlogin != null) {%>
+                <span class="errortext"> Неверный логин </span>
+                <%}%>
+                <div class="form-group">
+                    <label for="password">Пароль: </label>
+                    <div class="input-group">
+                        <input class="form-control" type="password" name="password" id="password" value="${password}" required
+                               placeholder="Введите пароль">
+                        <div class="input-group-addon" id="s-h-pass"><span class="glyphicon glyphicon-eye-open"
+                                                                           title="Показать пароль"></span></div>
+                    </div>
                 </div>
-            </div>
-            <%if (errorpassword != null) {%>
-            <span class="errortext"> Неверный пароль </span>
-            <%}%>
-            <div class="form-group">
-                <input type="submit" name="signup" value="Войти" class="btn btn-success pull-right">
-            </div>
+                <%if (errorpassword != null) {%>
+                <span class="errortext"> Неверный пароль </span>
+                <%}%>
+                <div class="btn_auto">
+                    <div class="form-group">
+                        <input type="submit" name="signup" value="Войти" class="btn btn-success pull-right">
+                    </div>
+                </div>
 
 
-        </form>
-        <form class="register" action="${pageContext.request.contextPath}/registration.jsp" method="post">
-            <input type="submit" name="registration" id="registration_btn" class="btn btn-success pull-right"
-                   value="Регистрация">
-        </form>
+            </form>
+            <form class="register" action="${pageContext.request.contextPath}/registration.jsp" method="post">
+                <input type="submit" name="registration" id="registration_btn" class="btn btn-success pull-right"
+                       value="Регистрация">
+            </form>
 
 
-
-
-
+        </div>
 
         <%}%>
 

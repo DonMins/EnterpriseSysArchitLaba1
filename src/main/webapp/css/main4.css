@@ -13,8 +13,25 @@
 }
 
 
+.autori{
+    display: flex;
+}
+.leftR{
+    display:block;
+    float:left;
+
+}
+.btn_auto{
+    position: fixed;
+    top:200px;
+}
 .register{
-    padding-left: 10px;
+
+    display: block;
+    float: right;
+    padding-top:200px;
+    padding-left: 20px;
+
 }
 
 .heading{
