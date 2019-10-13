@@ -38,6 +38,7 @@ public class RegisterServlet extends HttpServlet {
     protected void performTask(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         HttpSession session = req.getSession();
+        session.setAttribute("errorlogin",null);
 
         if (userService.findByLogin(req.getParameter("newLogin"))!= null) {
             session.setAttribute("exist",true);

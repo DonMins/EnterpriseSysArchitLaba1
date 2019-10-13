@@ -1,5 +1,6 @@
 $(document).ready(function() {
-    $('#toSend').click(function () {
+    $('#myForm').submit(function (e) {
+        e.preventDefault();
            $.ajax({
                 url : 'Servlet',
                 data : {

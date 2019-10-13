@@ -49,6 +49,7 @@ public class UserServlet extends HttpServlet {
             RequestDispatcher requestDispatcher = req.getRequestDispatcher("autorization.jsp");
             requestDispatcher.forward(req, resp);
         } else{
+            session.setAttribute("errorlogin",null);
             session.setAttribute("errorpassword",true);
             session.setAttribute("userIn",null);
             RequestDispatcher requestDispatcher = req.getRequestDispatcher("autorization.jsp");

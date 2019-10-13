@@ -11,10 +11,13 @@
     <title> Игра быки и коровы </title>
 
     <script src="http://code.jquery.com/jquery-2.2.4.js" type="text/javascript"></script>
-    <script src="js/app.js" type="text/javascript"></script>
+<%--    <script src="js/app.js" type="text/javascript"></script>--%>
 
 </head>
 <body>
+<script type="text/javascript">
+    <%@include file="js/app.js"%>
+</script>
 
 <form action="${pageContext.request.contextPath}/rating" method="post">
     <input type="submit" name="signup" value="Рейтинг игроков" class="btn btn-success pull-right">
@@ -28,27 +31,53 @@
 <h2> Я загадал число, попробуй угадать его... </h2>
 
 
-<table >
-    <tr>
-        <th style="width: 800px"> <textarea  readonly id="textarea"></textarea></th>
-    </tr>
-    <tr>
-        <th><div class="text">Поле для ввода числа:</div>
-            <form>
-            <input class="input" type="text" id="inputNumber" maxlength='4' minlength='4'
-                   placeholder="Введите 4-х значное число" onkeyup="return check(this);"
-                   onchange="return check(this); " required/></form></th>
 
 
-    </tr>
-    <th><span id="error"> </span></th>
-    <tr>
-        <th><button  class="button" type="submit"  id="toSend">Отправить</button></th>
 
-    </tr>
+<div class="gameArea">
+    <div class="textArea">
+        <textarea id="textarea" cols="100" rows="20" readonly></textarea>
+    </div>
 
 
-</table>
+    <form id="myForm">
+        <input class="input" type="text" id="inputNumber"  pattern=".{4,4}"
+               placeholder="Введите 4-х значное число" required onkeyup="return check(this);"
+               onchange="return check(this); " />
+        <button  class="button" type="submit"  id="toSend">Отправить</button>
+
+    </form>
+
+
+
+
+
+
+
+
+</div>
+
+<%--<table >--%>
+<%--    <tr>--%>
+<%--        <th style="width: 800px"> <textarea  readonly id="textarea"></textarea></th>--%>
+<%--    </tr>--%>
+<%--    <tr>--%>
+<%--        <th><div class="text">Поле для ввода числа:</div>--%>
+<%--            <form>--%>
+<%--            <input class="input" type="text" id="inputNumber" maxlength='4' minlength='4'--%>
+<%--                   placeholder="Введите 4-х значное число" onkeyup="return check(this);"--%>
+<%--                   onchange="return check(this); " required/></form></th>--%>
+
+
+<%--    </tr>--%>
+<%--    <th><span id="error"> </span></th>--%>
+<%--    <tr>--%>
+<%--        <th><button  class="button" type="submit"  id="toSend">Отправить</button></th>--%>
+
+<%--    </tr>--%>
+
+
+<%--</table>--%>
 
 </body>
 <% } else {
