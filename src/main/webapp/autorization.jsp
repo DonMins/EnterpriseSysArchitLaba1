@@ -23,7 +23,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
             integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
             crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="css/main4.css" type="text/css">
+    <link rel="stylesheet" href="css/main.css" type="text/css">
 
     <script>
         $(document).ready(function () {
@@ -47,27 +47,21 @@
     <div class="autorization" id="autorization">
         <%if (userIn != null) {%>
         <div class="inGame">
-
             ${userLogin}
             <div class="btn_left">
                 <form action="${pageContext.request.contextPath}/logout" method="post">
                     <input type="submit" name="signup" value="Выход" class="btn btn-success pull-right">
                 </form>
             </div>
-                <div class="btn_right">
-                    <form action="${pageContext.request.contextPath}/game.jsp" method="post">
+            <div class="btn_right">
+                <form action="${pageContext.request.contextPath}/game.jsp" method="post">
 
-                        <input type="submit" name="game_ btn" value="Играть" class="btn btn-success pull-right"  >
-                    </form>
-                </div>
-
-
+                    <input type="submit" name="game_ btn" value="Играть" class="btn btn-success pull-right">
+                </form>
+            </div>
         </div>
-
-
-
-
         <% } else { %>
+
         <div class="autori">
 
             <form class="leftR" action="${pageContext.request.contextPath}/userLogin" method="post">
@@ -75,11 +69,9 @@
                 <div class="form-group">
                     <label for="login"> Логин: </label>
 
-                        <input class="form-control" type="text" name="login" id="login" value="${login}" required
-                               placeholder="Введите логин">
-                    </div>
-
-
+                    <input class="form-control" type="text" name="login" id="login" value="${login}" required
+                           placeholder="Введите логин">
+                </div>
 
                 <%if (errorlogin != null) {%>
                 <span class="errortext"> Неверный логин </span>
@@ -87,7 +79,8 @@
                 <div class="form-group">
                     <label for="password">Пароль: </label>
                     <div class="input-group">
-                        <input class="form-control" type="password" name="password" id="password" value="${password}" required
+                        <input class="form-control" type="password" name="password" id="password" value="${password}"
+                               required
                                placeholder="Введите пароль">
                         <div class="input-group-addon" id="s-h-pass"><span class="glyphicon glyphicon-eye-open"
                                                                            title="Показать пароль"></span></div>
@@ -101,27 +94,19 @@
                         <input type="submit" name="signup" value="Войти" class="btn btn-success pull-right">
                     </div>
                 </div>
-
-
             </form>
             <form class="register" action="${pageContext.request.contextPath}/registration.jsp" method="post">
                 <input type="submit" name="registration" id="registration_btn" class="btn btn-success pull-right"
                        value="Регистрация">
             </form>
-
-
         </div>
-
         <%}%>
 
     </div>
     <div class="image">
-        <img src="images/logo.png"height="auto">
+        <img src="images/logo.png" height="auto">
     </div>
-
-
 </div>
-
 
 
 <div class="rules">
@@ -138,7 +123,5 @@
         7328 -- 4Б0К (число угадано)
     </p>
 </div>
-
-
 </body>
 </html>

@@ -14,19 +14,19 @@ import java.util.Collections;
 /**
  * Класс реализующий логику игры
  *
- * @author  Maks
+ * @author Maks
  * @version 1.0
  */
 @Stateless(name = "game")
 public class Game {
 
-    @EJB(beanName="UserServiceImpl")
+    @EJB(beanName = "UserServiceImpl")
     UserService userService;
 
-    @EJB(beanName="RatingServiceImpl")
+    @EJB(beanName = "RatingServiceImpl")
     RatingService ratingService;
 
-   public String genNumber() {
+    public String genNumber() {
         final int MAX_NUMBER = 10;
         Integer[] randomNumbers = new Integer[MAX_NUMBER];
         for (int i = 0; i < randomNumbers.length; i++) {

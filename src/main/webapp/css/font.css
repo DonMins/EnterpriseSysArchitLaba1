@@ -1,12 +1,13 @@
-body{
+body {
     font-family: "Comic Sans MS"; /* Семейство шрифтов */
     font-size: 18pt; /* Размер основного шрифта в пунктах  */
     text-align: center;
-    background-image:  url("font.jpg");
+    background-image: url("font.jpg");
     color: #ffffff; /* Цвет основного текста */
 
 }
-textarea{
+
+textarea {
     min-width: 550px;
     background: #fce9c0; /* Цвет фона */
     border: 2px solid #a9c358; /* Параметры рамки */
@@ -17,6 +18,7 @@ textarea{
     font-size: 14px; /* Размер шрифта */
     resize: none;
 }
+
 table {
     font-size: 15pt; /* Размер основного шрифта в пунктах  */
 
@@ -25,15 +27,16 @@ table {
 }
 
 .button {
-    padding:5px 15px;
-    background:#ccc;
-    border:0 none;
-    cursor:pointer;
+    padding: 5px 15px;
+    background: #ccc;
+    border: 0 none;
+    cursor: pointer;
     -webkit-border-radius: 5px;
     border-radius: 5px;
     font-size: 15pt; /* Размер основного шрифта в пунктах  */
 }
-.input{
+
+.input {
 
     margin-top: -35px;
     width: 200px;
@@ -43,7 +46,8 @@ table {
 
 
 }
-.text{
+
+.text {
     min-width: 620px;
 
     font-size: 20pt;

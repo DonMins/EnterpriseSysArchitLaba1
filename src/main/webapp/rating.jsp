@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <html>
-<%if (session.getAttribute("userLogin")!= null){%>
+<%if (session.getAttribute("userLogin") != null) {%>
 <head>
     <title>Рейтинг</title>
 </head>

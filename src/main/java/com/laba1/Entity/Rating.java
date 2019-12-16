@@ -1,6 +1,7 @@
 package com.laba1.Entity;
 
 import lombok.*;
+
 import javax.persistence.*;
 
 /**
@@ -29,7 +30,7 @@ public class Rating {
     @Column(name = "allAttempt")
     private Integer allAttempt;
 
-    @OneToOne(fetch=FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idUser", unique = true)
     private User users;
 

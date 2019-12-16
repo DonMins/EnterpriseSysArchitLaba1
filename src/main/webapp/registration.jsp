@@ -5,15 +5,11 @@
   Time: 13:49
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page import="java.util.*, java.text.*" %>
 <%@ page import="com.laba1.Entity.User" %>
 <%@ page import="com.laba1.Entity.Rating" %>
 <%@ page import="java.sql.SQLException" %>
-
-
-
-
 <html>
 <head>
     <script src="js/app.js" type="text/javascript"></script>
@@ -25,15 +21,13 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
             integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
             crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="css/main4.css" type="text/css">
+    <link rel="stylesheet" href="css/main.css" type="text/css">
 </head>
 <body>
 
-<%  Object confirmpassword = session.getAttribute("confirmerror"); %>
+<% Object confirmpassword = session.getAttribute("confirmerror"); %>
 <% Object errorNewlogin = session.getAttribute("exist");%>
 <%-- Вход --%>
-
-
 <div id="registration" class="registration">
     <h2 class="heading">Регистрация</h2>
     <hr class="line">
@@ -43,7 +37,7 @@
             <label for="newLogin"> Логин: </label>
             <div class="input-group">
                 <input class="form-control" type="text" name="newLogin" id="newLogin" value="${newLogin}" required
-                   placeholder="Введите логин">
+                       placeholder="Введите логин">
             </div>
         </div>
 
@@ -53,7 +47,8 @@
         <div class="form-group">
             <label for="newPassword">Пароль: </label>
             <div class="input-group">
-                <input class="form-control" type="password" name="newPassword" id="newPassword" value="${newPassword}" required
+                <input class="form-control" type="password" name="newPassword" id="newPassword" value="${newPassword}"
+                       required
                        placeholder="Введите пароль">
             </div>
         </div>
@@ -61,25 +56,22 @@
         <div class="form-group">
             <label for="confirmPassword">Повторите пароль: </label>
             <div class="input-group">
-                <input class="form-control" type="password" name="confirmPassword" id="confirmPassword" value="${confirmPassword}" required
+                <input class="form-control" type="password" name="confirmPassword" id="confirmPassword"
+                       value="${confirmPassword}" required
                        placeholder="Введите пароль снова">
             </div>
         </div>
 
-        <%if(confirmpassword!=null){%>
-        <span  class="errortext"> Пароль не совпадает </span>
+        <%if (confirmpassword != null) {%>
+        <span class="errortext"> Пароль не совпадает </span>
         <%}%>
         <div class="form-group">
             <div class="input-group">
                 <input type="submit" name="newRegister" value="Регистрация" class="btn btn-success pull-right">
             </div>
         </div>
-
     </form>
-
-</div >
+</div>
 <img src="images/logo.png" class="img_reg">
-
-
 </body>
 </html>

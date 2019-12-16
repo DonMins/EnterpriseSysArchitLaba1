@@ -36,7 +36,6 @@ public class RatingServlet extends HttpServlet {
         performTask(req, resp);
     }
 
-
     protected void performTask(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
          List<Rating> ratingList = ratingService.findAll();
         // Создаем map с именем пользователя и его рейтингом и сразу отсортировываем по убыванию

@@ -24,7 +24,6 @@ public class RatingServiceImpl implements RatingService {
     @Override
     public void save(Rating rating) {
         ratingDao.save(rating);
-
     }
 
     @Override
@@ -35,7 +34,6 @@ public class RatingServiceImpl implements RatingService {
     @Override
     public void delete(Rating rating) {
         ratingDao.delete(rating);
-
     }
 
     @Override

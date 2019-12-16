@@ -1,44 +1,50 @@
 
-.upper{
-    display:flex;
+.upper {
+    display: flex;
     width: 100%;
 }
-.autorization{
-    float:left;
+
+.autorization {
+    float: left;
     width: 300px;
 }
-.image{
-    float:right;
+
+.image {
+    float: right;
     padding-left: 500px;
 }
 
 
-.autori{
+.autori {
     display: flex;
 }
-.leftR{
-    display:block;
-    float:left;
+
+.leftR {
+    display: block;
+    float: left;
 
 }
-.btn_auto{
+
+.btn_auto {
     position: fixed;
-    top:200px;
+    top: 200px;
 }
-.register{
+
+.register {
 
     display: block;
     float: right;
-    padding-top:200px;
+    padding-top: 200px;
     padding-left: 20px;
 
 }
 
-.heading{
-    text-transform:uppercase;
+.heading {
+    text-transform: uppercase;
 }
-.rules{
-    display:block;
+
+.rules {
+    display: block;
     /*padding-top: 30px;*/
     text-align: center;
 }
@@ -47,45 +53,52 @@ span.errortext {
     color: red;
     font-size: 15px;
 }
-hr.line{
+
+hr.line {
     margin-top: 20px;
     margin-bottom: 20px;
     border: 0;
     border-top: 1px solid #e80a0a;
 }
-input.btn.btn-success.pull-right.game  {
+
+input.btn.btn-success.pull-right.game {
     width: 300px;
     height: 100px;
     margin-top: 50px;
-    margin-right:-200px;
+    margin-right: -200px;
     border-radius: 20px;
 }
-.registration{
-    display:block;
+
+.registration {
+    display: block;
     margin-left: auto;
     margin-right: auto;
     margin-top: 20px;
     width: 300px;
 }
-.img_reg{
+
+.img_reg {
 
     margin-left: 400px;
 
 }
-.inGame{
+
+.inGame {
     font-size: 20px;
-    display:flex;
+    display: flex;
     width: 400px;
     margin-top: 100px;
     margin-left: 100px;
 
 
 }
-.btn_left{
-    float:left;
+
+.btn_left {
+    float: left;
 }
-.btn_right{
-    float:right;
+
+.btn_right {
+    float: right;
 }
 
 

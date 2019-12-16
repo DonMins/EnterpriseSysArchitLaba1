@@ -10,6 +10,7 @@ import java.util.List;
 
 /**
  * Класс реализующий интерфейс для работы с таблицей Rating
+ *
  * @author Maks
  * @version 1.1
  */
@@ -21,8 +22,8 @@ public class RatingDaoImpl implements RatingDao {
 
     @Override
     public Rating findById(int id) {
-            return em.find(Rating.class, id);
-        }
+        return em.find(Rating.class, id);
+    }
 
     @Override
     public void save(Rating rating) {
@@ -33,7 +34,7 @@ public class RatingDaoImpl implements RatingDao {
     }
 
     @Override
-    public void update(Rating rating){
+    public void update(Rating rating) {
         em.getTransaction().begin();
         em.merge(rating);
         em.flush();
@@ -50,7 +51,7 @@ public class RatingDaoImpl implements RatingDao {
 
     @Override
     public Rating findByLogin(String login) {
-       List<Rating> query =  em.createQuery("select m from Rating m " +
+        List<Rating> query = em.createQuery("select m from Rating m " +
                 "where m.users.id =(select t.id from User t where t.login=:login)")
                 .setParameter("login", login).getResultList();
         return query.get(0);
